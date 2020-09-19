@@ -7,6 +7,11 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JWTDemo", "JWTDemo\JWTDemo.
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JWTDemo.Model", "JWTDemo.Model\JWTDemo.Model.csproj", "{9D416CF7-56C0-4CE0-A680-2471EACC9E0A}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{AFA4DA16-EFF1-4084-9184-AE34CB927A07}"
+	ProjectSection(SolutionItems) = preProject
+		帮助文本.txt = 帮助文本.txt
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU

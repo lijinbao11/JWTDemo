@@ -25,7 +25,7 @@ namespace JWTDemo.Swagger
                 }
             };
 
-            #region 注册swagger服务   之后授权JWT 
+            #region 注册Swagger服务
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v3", apiInfo);
@@ -33,16 +33,41 @@ namespace JWTDemo.Swagger
                 //添加注释
                 try
                 {
-                    c.IncludeXmlComments(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "JWTDemo.OpenApi.xml"), true);
-                    c.IncludeXmlComments(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "JWTDemo.AppService.xml"));
+                    c.IncludeXmlComments(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "RayPI.OpenApi.xml"), true);
+                    c.IncludeXmlComments(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "RayPI.AppService.xml"));
                 }
                 catch (Exception)
                 {
                     //todo:记录日志
                 }
+
+
+                //添加控制器注释
+                //c.DocumentFilter<SwaggerDocTag>();
+
+                //添加header验证信息
+                //c.OperationFilter<SwaggerHeader>();
+                //var security = new Dictionary<string, IEnumerable<string>> { { "Bearer", new string[] { } }, };
+
+                c.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme()
+                {
+                    Description = "Please enter into field the word 'Bearer' followed by a space and the JWT value",
+                    Name = "Authorization",
+                    In = ParameterLocation.Header,
+                    Type = SecuritySchemeType.ApiKey,
+                });
+                c.AddSecurityRequirement(new OpenApiSecurityRequirement
+                {
+                    { new OpenApiSecurityScheme
+                    {
+                        Reference = new OpenApiReference()
+                        {
+                            Id = "Bearer",
+                            Type = ReferenceType.SecurityScheme
+                        }
+                    }, Array.Empty<string>() }
+                });
             });
-
-
             #endregion
             return services;
 

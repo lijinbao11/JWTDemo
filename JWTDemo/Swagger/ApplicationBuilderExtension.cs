@@ -15,10 +15,7 @@ namespace JWTDemo.Swagger
             {
                 c.SwaggerEndpoint("/swagger/v3/swagger.json", "接口文档");
             });
-
         }
-
-
 
     }
 }
